@@ -36,27 +36,27 @@
 	<header>		
 		<div class="ui menu">
 			<div class="item">
-    			<div class="ui blue button" onclick="location.href = '/';">메인화면</div>
+    			<div class="ui blue button" onclick="location.href = '/';">HOME</div>
   			</div>
   			
   			<div class="item">
-  				<a href="/movieList.do?cat_no=1">액션</a>
+  				<a href="/movieList.do?cat_no=1">자연 농장</a>
   			</div>
   			
   			<div class="item">
-  				<a href="/movieList.do?cat_no=2">로맨스</a>
+  				<a href="/movieList.do?cat_no=2">동물 농장</a>
   			</div>
   			
   			<div class="item">
-  				<a href="/movieList.do?cat_no=3">코미디</a>
+  				<a href="/movieList.do?cat_no=3">손꾸락 농장</a>
   			</div>
   			
   			<div class="item">
-  				<a href="/movieList.do?cat_no=4">스릴러</a>
+  				<a href="/movieList.do?cat_no=4">예약, 마이페이지</a>
   			</div>
   			
   			<div class="item">
-  				<a href="/movieList.do?cat_no=5">애니메이션</a>
+  				<a href="/review2.do">Q&A</a>
   			</div>
   			<div class="item">
   				<a href="/review.do">후기</a>
