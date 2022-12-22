@@ -45,7 +45,6 @@ public class FrontController extends HttpServlet {
 		list.put("/ticketBuy.do", new TicketInsertController());
 		list.put("/deleteTicket.do", new DeleteMyTicketController());
 		list.put("/review.do", new ReviewController());
-		list.put("/review2.do", new ReviewController2());
 		list.put("/reviewInsert.do", new ReviewInsertController());
 		list.put("/reviewList.do", new ReviewListController());
 		list.put("/deleteReview.do", new DeleteReviewController());

@@ -28,7 +28,7 @@ public class ReviewController2 implements Controller {
 		ArrayList<MovieVO> movieList = instance.selectCategory(category);
 
 		req.setAttribute("movieList", movieList);
-		req.getRequestDispatcher("/view/review.jsp").forward(req, resp);
+		req.getRequestDispatcher("/view/FAQ.jsp").forward(req, resp);
 		
 	}
 
