@@ -1,7 +1,5 @@
 package sec03.brd07;
 
-import java.lang.reflect.Member;
-import java.net.URLEncoder;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -12,8 +10,6 @@ import java.util.List;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
-
-import vo.MemberVO;
 
 public class BoardDAO {
 	private DataSource dataFactory;
