@@ -3,6 +3,7 @@
     isELIgnored="false" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="../header.jsp"%>
 <%
   request.setCharacterEncoding("UTF-8");
 %> 
@@ -19,7 +20,7 @@
    <script  src="http://code.jquery.com/jquery-latest.min.js"></script> 
    <script type="text/javascript" >
      function backToList(obj){
-	    obj.action="${contextPath}/view/listArticles.do";
+	    obj.action="${contextPath}/board/listArticles.do";
 	    obj.submit();
      }
  
@@ -93,7 +94,7 @@
       작성자 아이디
    </td>
    <td >
-    <input type=text value="${article.id }" name="writer"  disabled />
+    <input type=text value="${user.getId()}" name="writer"  disabled />
    </td>
   </tr>
   <tr>

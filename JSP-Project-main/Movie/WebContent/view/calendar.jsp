@@ -1,19 +1,14 @@
-<%@page import="vo.MovieVO"%>
-<%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page session="true" %>
-<%@ include file="../header.jsp" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: 502
+  Date: 2022-10-27
+  Time: 오전 10:54
+  캘린더 파일
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<%
-	ArrayList<MovieVO> list = new ArrayList<MovieVO>();
-
-	if(request.getAttribute("movieList") == null) {
-		response.sendRedirect("movieList.do");
-	}else {
-		list = (ArrayList) request.getAttribute("movieList");
-	}
-%>
 <style>
     .calendar {
         grid-area: a;
@@ -211,73 +206,29 @@ function autoLeftPad(num, digit) {
         num = new Array(digit - String(num).length + 1).join("0") + num;
     }
     return num;
-}
-</script>
+}</script>
 
-<div class="ui container">
-    <div class="visual">
-        <!-- <img src="./images/logo.jpg" alt="visualImg"> -->
-        <!--  <video width="1120" height="630" src="video/movie.mp4" controls autoplay muted loop></video>-->
-    </div>
-
-    <div class="main">
-        <h2>전체 영화 목록</h2>
-
-        <div class="MovieList">
-            <div class="ui link cards unit">
-            <%
-				for (MovieVO vo : list) {
-					String cat = "";
-					
-					switch (vo.getCategory()) {
-						case 1 :
-							cat = "액션";
-							break;
-						case 2 :
-							cat = "로맨스";
-							break;
-						case 3 :
-							cat = "코미디";
-							break;
-						case 4 :
-							cat = "스릴러";
-							break;
-						case 5 :
-							cat = "애니메이션";
-							break;
-					}
-			%>
-                <div class="card" onclick="location.href = '/movieInfo.do?movieNo=<%=vo.getMovieNo()%>';">
-                    <div class="image">
-                        <img src="/images/<%=vo.getImg()%>">
-                    </div>
-                    <div class="content"> 
-                        <div class="header"><%=vo.getMovieName() %></div>
-
-                        <div class="meta">
-                            <span class="date"><%=cat %></span>
-                        </div>
-
-                        <div class="description">
-                        	<%=vo.getInfo() %>
-                        </div>
-                    </div>
-
-                    <div class="extra content">
-                        <span class="right floated">
-                       	<%=vo.getRuntime() %>분
-                        </span>
-
-                        <span>
-                            <i class="user icon"></i>
-                            No: <%=vo.getMovieNo() %>
-                        </span>
-                    </div>
-                </div>
-            <% } %>
-            </div>
-        </div>
-    </div>
+<div class="calendar_wrap">
+    <table class="calendar">
+        <thead>
+        <tr class="calendar_tit">
+            <td onClick="prevCalendar();" style="cursor:pointer;">&#60;&#60;</td>
+            <td colspan="5">
+                <span id="calYear">YYYY</span>년
+                <span id="calMonth">MM</span>월
+            </td>
+            <td onClick="nextCalendar();" style="cursor:pointer;">&#62;&#62;</td>
+        </tr>
+        <tr class="calendar_days">
+            <td>일</td>
+            <td>월</td>
+            <td>화</td>
+            <td>수</td>
+            <td>목</td>
+            <td>금</td>
+            <td>토</td>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
 </div>
-
-<%@ include file="../footer.jsp" %>

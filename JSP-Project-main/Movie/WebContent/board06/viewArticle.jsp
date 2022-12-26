@@ -94,7 +94,7 @@
       작성자 아이디
    </td>
    <td >
-    <input type=text value="${article.id }" name="writer"  disabled />
+    <input type=text value="${user.getId()}" name="writer"  disabled />
    </td>
   </tr>
   <tr>
