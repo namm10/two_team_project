@@ -6,36 +6,36 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import common.JdbcUtil;
-import vo.MovieVO;
 import vo.ScheduleVO;
 import vo.TicketVO;
+import vo.TripVO;
 
-public class MovieDAO {
-	private static MovieDAO instance = new MovieDAO();
+public class TripDAO {
+	private static TripDAO instance = new TripDAO();
 
-	private MovieDAO() {
+	private TripDAO() {
 	}
 
-	public static MovieDAO getInstance() {
+	public static TripDAO getInstance() {
 		return instance;
 	}
 
 	// 영화 가져오는 메서드 카테고리가 0이면 모든 영화를 불러오고 카테고리가 1, 2면 각 카테고리에 맞는 영화만 불러와집니다.
     // 불러와진 영화들을 리스트에 저장하여 return 합니다.
-	public ArrayList<MovieVO> selectCategory(int category) {
+	public ArrayList<TripVO> selectCategory(int category) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		ArrayList<MovieVO> movieList = new ArrayList<MovieVO>();
+		ArrayList<TripVO> tripList = new ArrayList<TripVO>();
 		try {
 
 			conn = JdbcUtil.getConnection();
 
-			String sql = "SELECT * FROM movie ORDER BY movieNo";
+			String sql = "SELECT * FROM trip ORDER BY tripNo";
 
 			if (category != 0) {
-				sql = "SELECT * FROM movie WHERE category = " + category + " ORDER BY movieNo";
+				sql = "SELECT * FROM trip WHERE category = " + category + " ORDER BY tripNo";
 			}
 
 			pstmt = conn.prepareStatement(sql);
@@ -43,16 +43,16 @@ public class MovieDAO {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				MovieVO vo = new MovieVO();
+				TripVO vo = new TripVO();
 
-				vo.setMovieNo(rs.getInt("movieNo"));
-				vo.setMovieName(rs.getString("movieName"));
+				vo.setTripNo(rs.getInt("tripNo"));
+				vo.setTripName(rs.getString("tripName"));
 				vo.setCategory(rs.getInt("category"));
 				vo.setRuntime(rs.getInt("runtime"));
 				vo.setImg(rs.getString("img"));
 				vo.setInfo(rs.getString("info"));
 
-				movieList.add(vo);
+				tripList.add(vo);
 			}
 
 		} catch (Exception e) {
@@ -63,31 +63,31 @@ public class MovieDAO {
 			// DB 객체 반환
 			JdbcUtil.close(rs, pstmt, conn);
 		}
-		return movieList;
+		return tripList;
 	}
 	// 선택한 영화의 정보를 받아온다.
-	public MovieVO movieInfo(int movieNo) {
+	public TripVO tripInfo(int tripNo) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
-		MovieVO movieInfo = new MovieVO();
+		TripVO tripInfo = new TripVO();
 
 		try {
 			conn = JdbcUtil.getConnection();
 
-			pstmt = conn.prepareStatement("SELECT * FROM movie WHERE movieNo = ?");
+			pstmt = conn.prepareStatement("SELECT * FROM trip WHERE tripNo = ?");
 
-			pstmt.setInt(1, movieNo);
+			pstmt.setInt(1, tripNo);
 			rs = pstmt.executeQuery();
 
 			if(rs.next()) {				
-				movieInfo.setMovieNo(rs.getInt("movieNo"));
-				movieInfo.setMovieName(rs.getString("movieName"));
-				movieInfo.setCategory(rs.getInt("category"));
-				movieInfo.setRuntime(rs.getInt("runtime"));
-				movieInfo.setImg(rs.getString("img"));
-				movieInfo.setInfo(rs.getString("info"));
+				tripInfo.setTripNo(rs.getInt("tripNo"));
+				tripInfo.setTripName(rs.getString("tripName"));
+				tripInfo.setCategory(rs.getInt("category"));
+				tripInfo.setRuntime(rs.getInt("runtime"));
+				tripInfo.setImg(rs.getString("img"));
+				tripInfo.setInfo(rs.getString("info"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -95,10 +95,10 @@ public class MovieDAO {
 			JdbcUtil.close(rs, pstmt, conn);
 		}
 
-		return movieInfo;
+		return tripInfo;
 	}
 	// 선택한 영화의 상영 시간에 대한 정보를 반환해주는 함수
-	public ArrayList<ScheduleVO> scheduleAList(int movieNo) {
+	public ArrayList<ScheduleVO> scheduleAList(int tripNo) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -107,24 +107,24 @@ public class MovieDAO {
 		
 		try {
 			conn = JdbcUtil.getConnection();
-			pstmt = conn.prepareStatement("SELECT m.movieName, m.category, m.img, "
-									+ "m.info, m.runtime, m.movieNo, s.schNo, s.roomNo, s.runDay, r.seatcnt "
-									+ "FROM movie m, schedule s, dayroom r "
-									+ "WHERE m.movieNo = s.movieNo AND r.schNo = s.schNo AND m.movieNo = ?");
+			pstmt = conn.prepareStatement("SELECT m.tripName, m.category, m.img, "
+									+ "m.info, m.runtime, m.tripNo, s.schNo, s.roomNo, s.runDay, r.seatcnt "
+									+ "FROM trip m, schedule s, dayroom r "
+									+ "WHERE m.tripNo = s.tripNo AND r.schNo = s.schNo AND m.tripNo = ?");
 			
-			pstmt.setInt(1, movieNo);
+			pstmt.setInt(1, tripNo);
 			
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
 				ScheduleVO vo = new ScheduleVO();
 				
-				vo.setMovieName(rs.getString("movieName"));
+				vo.setTripName(rs.getString("tripName"));
 				vo.setCategory(Integer.parseInt(rs.getString("category")));
 				vo.setImg(rs.getString("img"));
 				vo.setInfo(rs.getString("info"));
 				vo.setSchNo(rs.getInt("schNo"));
-				vo.setMovieNo(rs.getInt("movieNo"));
+				vo.setTripNo(rs.getInt("tripNo"));
 				vo.setRunDay(rs.getTimestamp("runDay"));
 				vo.setRuntime(rs.getInt("runtime"));
 				vo.setRoomNo(rs.getInt("roomNo"));
@@ -160,7 +160,7 @@ public class MovieDAO {
 				TicketVO vo = new TicketVO();
 				
 				vo.setTicketNo(rs.getInt("ticketNo"));
-				vo.setMovieName(rs.getString("movieName"));
+				vo.setTripName(rs.getString("tripName"));
 				vo.setBookDate(rs.getTimestamp("bookDate"));
 				vo.setSchNo(rs.getInt("schNo"));
 				vo.setRoomNo(rs.getInt("roomNo"));				
@@ -197,7 +197,7 @@ public class MovieDAO {
 				TicketVO vo = new TicketVO();
 				
 				vo.setTicketNo(rs.getInt("ticketNo"));
-				vo.setMovieName(rs.getString("movieName"));
+				vo.setTripName(rs.getString("tripName"));
 				vo.setBookDate(rs.getTimestamp("bookDate"));
 				vo.setSchNo(rs.getInt("schNo"));
 				vo.setRoomNo(rs.getInt("roomNo"));				
@@ -235,7 +235,7 @@ public class MovieDAO {
 				TicketVO vo = new TicketVO();
 				
 				vo.setTicketNo(rs.getInt("ticketNo"));
-				vo.setMovieName(rs.getString("movieName"));
+				vo.setTripName(rs.getString("tripName"));
 				vo.setBookDate(rs.getTimestamp("bookDate"));
 				vo.setSchNo(rs.getInt("schNo"));
 				vo.setRoomNo(rs.getInt("roomNo"));				
@@ -260,12 +260,12 @@ public class MovieDAO {
 		TicketVO ticket = new TicketVO();
 		try {
 			conn = JdbcUtil.getConnection();
-			pstmt = conn.prepareStatement("SELECT movieName, runDay FROM schedule WHERE schNo = ? AND roomNo = ?");
+			pstmt = conn.prepareStatement("SELECT tripName, runDay FROM schedule WHERE schNo = ? AND roomNo = ?");
 			pstmt.setInt(1, schNo);
 			pstmt.setInt(2, roomNo);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				ticket.setMovieName(rs.getString("movieName"));
+				ticket.setTripName(rs.getString("tripName"));
 				ticket.setBookDate(rs.getTimestamp("runDay"));								
 			}
 		} catch (Exception e) {
@@ -287,7 +287,7 @@ public class MovieDAO {
 			pstmt = conn.prepareStatement("INSERT INTO ticket VALUES(?, ?, ?, ?, ?, ?, ?)");
 			//"티켓 정보 인서트"
 			pstmt.setInt(1, ticketMaxNo() + 1); // 티켓번호가 겹치지 않게 하기위해 최대번호에 +1해준 번호를 인서트
-			pstmt.setString(2, vo.getMovieName());
+			pstmt.setString(2, vo.getTripName());
 			pstmt.setTimestamp(3, vo.getBookDate());
 			pstmt.setInt(4, vo.getSchNo());
 			pstmt.setInt(5, vo.getRoomNo());

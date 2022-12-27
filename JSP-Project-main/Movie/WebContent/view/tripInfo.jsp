@@ -1,6 +1,6 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="vo.ScheduleVO"%>
-<%@page import="vo.MovieVO"%>
+<%@page import="vo.TripVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -8,13 +8,13 @@
 <%@ include file="../header.jsp" %>
 
 <%
-	MovieVO movieInfo = new MovieVO();
+	TripVO tripInfo = new TripVO();
 	ArrayList<ScheduleVO> schList = new ArrayList<ScheduleVO>();
 	
-	if(request.getAttribute("movieInfo") == null) {
+	if(request.getAttribute("tripInfo") == null) {
 		response.sendRedirect("/");
 	}else {
-		movieInfo = (MovieVO) request.getAttribute("movieInfo");
+		tripInfo = (TripVO) request.getAttribute("tripInfo");
 		schList = (ArrayList) request.getAttribute("scheduleAList");
 	}
 	
@@ -198,7 +198,7 @@ function calendarChoiceDay(column) {
     // @param 선택일 체크 표시
     column.style.backgroundColor = "#af28fe";
     column.style.color = "#ffffff";
-    column.location,href="movieList.do";
+    column.location,href="tripList.do";
     // @param 선택일 클래스명 변경
     column.classList.add("choiceDay");
 
@@ -228,7 +228,7 @@ function autoLeftPad(num, digit) {
     <div class="main">
         <h2>체험 정보</h2>
 
-		<table class="ui inverted violet table movieInfoTable">
+		<table class="ui inverted violet table tripInfoTable">
 			<thead>
 				<tr>
 					<th>체험 번호</th>
@@ -239,8 +239,8 @@ function autoLeftPad(num, digit) {
 			</thead>
 			<tbody>
 				<%
-					img = movieInfo.getImg();	
-					switch (movieInfo.getCategory()) {
+					img = tripInfo.getImg();	
+					switch (tripInfo.getCategory()) {
 					case 1:
 						cat = "자연 체험";
 						break;
@@ -259,10 +259,10 @@ function autoLeftPad(num, digit) {
 					}
 				%>
 				<tr>
-					<td>No.<%=movieInfo.getMovieNo()%></td>
+					<td>No.<%=tripInfo.getTripNo()%></td>
 					<td><%=cat%></td>
-					<td><%=movieInfo.getMovieName()%></td>
-					<td><%=movieInfo.getInfo()%></td>
+					<td><%=tripInfo.getTripName()%></td>
+					<td><%=tripInfo.getInfo()%></td>
 				</tr>
 			</tbody>
 		</table>
@@ -270,7 +270,7 @@ function autoLeftPad(num, digit) {
 		<h2>시간 선택</h2>
 		<p class="tip">Tip: 원하는 시간대에 클릭하면 좌석 선택 페이지로 이동됩니다.</p>
 
-		<div class="movieInfoBox">
+		<div class="tripInfoBox">
 			<div class="leftBox">
 				<img src="/images/<%=img%>" alt="<%=img%>">
 			</div>

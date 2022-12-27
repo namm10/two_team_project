@@ -1,5 +1,5 @@
 <%@page import="vo.MemberVO"%>
-<%@page import="vo.MovieVO"%>
+<%@page import="vo.TripVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -10,9 +10,9 @@
 	MemberVO id = (MemberVO) request.getAttribute("Auser");
 
 	if (id != null) {
-		out.print("<script>swal('Success', '" + id.getId() + "님 로그인 되었습니다.', 'success').then((val) => {location.href = '/movieList.do';});</script>");
+		out.print("<script>swal('Success', '" + id.getId() + "님 로그인 되었습니다.', 'success').then((val) => {location.href = '/List.do';});</script>");
 		session.setAttribute("user", id);
 	}else {
-		response.sendRedirect("/movieList.do");
+		response.sendRedirect("/List.do");
 	}
 %>

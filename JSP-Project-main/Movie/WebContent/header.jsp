@@ -11,8 +11,14 @@
 <link rel="stylesheet" href="/lib/style.css">
 <link rel="stylesheet" type="text/css" href="/lib/semantic.min.css">
 <style type="text/css">
-	.ui{
-	
+	#top{
+		width: 1920px;
+		margin:0 auto;
+		background-color: red;
+	}
+	.menu{
+		width: 1100px;
+		margin: auto;
 	}
 </style>
 <script
@@ -21,7 +27,7 @@
   crossorigin="anonymous"></script>
 <script src="/lib/semantic.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-</head>
+</head class="top">
 <%
 	MemberVO user = (MemberVO) session.getAttribute("user");
 	int userStatus = 0;
@@ -45,15 +51,15 @@
   			</div>
   			
   			<div class="item">
-  				<a href="/movieList.do?cat_no=1">자연 체험</a>
+  				<a href="/tripList.do?cat_no=1">자연 체험</a>
   			</div>
   			
   			<div class="item">
-  				<a href="/movieList.do?cat_no=2">동물 체험</a>
+  				<a href="/tripList.do?cat_no=2">동물 체험</a>
   			</div>
   			
   			<div class="item">
-  				<a href="/movieList.do?cat_no=3">공예 체험</a>
+  				<a href="/tripList.do?cat_no=3">공예 체험</a>
   			</div>
   			
   			<div class="item">

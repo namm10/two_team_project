@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.MemberDAO;
-import dao.MovieDAO;
+import dao.TripDAO;
 import vo.MemberVO;
 import vo.TicketVO;
 
@@ -30,7 +30,7 @@ public class TicketInsertController implements Controller {
 		//좌석 번호를 for문으로 Ticket 테이블에 insert해준다
 		for(int i = 0; i < arr.length; i++) {
 			// VO객체에 데이터 바인딩
-			MovieDAO instance = MovieDAO.getInstance();
+			TripDAO instance = TripDAO.getInstance();
 			//상영시간과 영화 이름을 가져오지 못했기에 따로 함수로 특정 지정
 			TicketVO vo = instance.setTicketInfo(schNo,roomNo);
 			vo.setSchNo(schNo);

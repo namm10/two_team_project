@@ -3,24 +3,24 @@ package vo;
 import java.sql.Timestamp;
 
 public class ScheduleVO {
-	private String movieName;
+	private String tripName;
 	private int category;
 	private String img;
 	private String info;
 	private int schNo;
-	private int movieNo;
+	private int tripNo;
 	private Timestamp runDay;
 	private int runtime;
 	private int roomNo;
 	private int seatCnt;
 	
-	public ScheduleVO(String movieName, int category, String img, String info, int schNo, int movieNo, Timestamp runDay,int runtime, int roomNo, int seatCnt) {
-		this.movieName = movieName;
+	public ScheduleVO(String tripName, int category, String img, String info, int schNo, int tripNo, Timestamp runDay,int runtime, int roomNo, int seatCnt) {
+		this.tripName = tripName;
 		this.category = category;
 		this.img = img;
 		this.info = info;
 		this.schNo = schNo;
-		this.movieNo = movieNo;
+		this.tripNo = tripNo;
 		this.runDay = runDay;
 		this.runtime = runtime;
 		this.roomNo = roomNo;
@@ -29,12 +29,12 @@ public class ScheduleVO {
 
 	public ScheduleVO() {}
 
-	public String getMovieName() {
-		return movieName;
+	public String getTripName() {
+		return tripName;
 	}
 
-	public void setMovieName(String movieName) {
-		this.movieName = movieName;
+	public void setTripName(String tripName) {
+		this.tripName = tripName;
 	}
 
 	public int getCategory() {
@@ -69,12 +69,12 @@ public class ScheduleVO {
 		this.schNo = schNo;
 	}
 
-	public int getMovieNo() {
-		return movieNo;
+	public int getTripNo() {
+		return tripNo;
 	}
 
-	public void setMovieNo(int movieNo) {
-		this.movieNo = movieNo;
+	public void setTripNo(int tripNo) {
+		this.tripNo = tripNo;
 	}
 
 	public Timestamp getRunDay() {

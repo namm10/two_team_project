@@ -7,7 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.MovieDAO;
+import dao.TripDAO;
 
 public class DeleteMyTicketController implements Controller{
 
@@ -20,7 +20,7 @@ public class DeleteMyTicketController implements Controller{
 		int schNo = Integer.parseInt(req.getParameter("schNo"));
 		if(ticketNo != 0) {
 			//해당 id와 티켓 번호 스케줄 번호를 가지고 예매한 티켓을 취소 시킨다.
-			MovieDAO instance = MovieDAO.getInstance();
+			TripDAO instance = TripDAO.getInstance();
 			instance.cancelTicket(id,ticketNo,schNo);
 		}
 		//취소 시키고 다시 예매목록으로

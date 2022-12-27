@@ -8,9 +8,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.MovieDAO;
+import dao.TripDAO;
 import dao.ReviewDAO;
-import vo.MovieVO;
+import vo.TripVO;
 import vo.ReviewVO;
 
 public class ReviewController implements Controller {
@@ -20,14 +20,14 @@ public class ReviewController implements Controller {
 		
 	int category = 0;
 		
-		if (req.getParameter("movieNo") != null) {
-			category = Integer.parseInt(req.getParameter("movieNo"));
+		if (req.getParameter("tripNo") != null) {
+			category = Integer.parseInt(req.getParameter("tripNo"));
 		}
 		
-		MovieDAO instance = MovieDAO.getInstance();
-		ArrayList<MovieVO> movieList = instance.selectCategory(category);
+		TripDAO instance = TripDAO.getInstance();
+		ArrayList<TripVO> tripList = instance.selectCategory(category);
 
-		req.setAttribute("movieList", movieList);
+		req.setAttribute("tripList", tripList);
 		req.getRequestDispatcher("/view/review.jsp").forward(req, resp);
 		
 	}

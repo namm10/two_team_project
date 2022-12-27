@@ -18,12 +18,12 @@ public class ReviewInsertController  implements Controller{
 			throws ServerException, IOException, ServletException {
 		String id = req.getParameter("userId");
 		String txt = req.getParameter("txt");
-		int movieNo = Integer.parseInt(req.getParameter("movieNo"));
+		int No = Integer.parseInt(req.getParameter("No"));
 		
 		ReviewDAO instance = ReviewDAO.getInstance();
-		instance.insertReview(txt, id, movieNo);
+		instance.insertReview(txt, id, No);
 		
-		String dis = "/reviewList.do?movieNo=" + movieNo;
+		String dis = "/reviewList.do?No=" + No;
 		req.getRequestDispatcher(dis).forward(req, resp);
 	}
 

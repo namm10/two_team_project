@@ -36,10 +36,10 @@ public class FrontController extends HttpServlet {
 		charset = config.getInitParameter("charset");
 		
 		list = new HashMap<String, Controller>();
-		list.put("/movieList.do", new MovieListController());
+		list.put("/tripList.do", new TripListController());
 		list.put("/registerController.do", new RegisterController());
 		list.put("/loginController.do", new LoginController());
-		list.put("/movieInfo.do", new MovieInfoController());
+		list.put("/tripInfo.do", new TripInfoController());
 		list.put("/chooseSeat.do", new ChooseSeatController());
 		list.put("/myTicket.do", new MyTicketController());
 		list.put("/ticketBuy.do", new TicketInsertController());

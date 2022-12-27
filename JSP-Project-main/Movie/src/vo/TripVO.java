@@ -1,38 +1,38 @@
 package vo;
 
-public class MovieVO {
-	private int movieNo;
-	private String movieName;
+public class TripVO {
+	private int tripNo;
+	private String tripName;
 	private int category;
 	private int runtime;
 	private String img;
 	private String info;
 
-	public MovieVO(int movieNo, String movieName, int category, int runtime, String img, String info) {
-		this.movieNo = movieNo;
-		this.movieName = movieName;
+	public TripVO(int tripNo, String tripName, int category, int runtime, String img, String info) {
+		this.tripNo = tripNo;
+		this.tripName = tripName;
 		this.category = category;
 		this.runtime = runtime;
 		this.img = img;
 		this.info = info;
 	}
 	
-	public MovieVO() {}
+	public TripVO() {}
 
-	public int getMovieNo() {
-		return movieNo;
+	public int getTripNo() {
+		return tripNo;
 	}
 
-	public void setMovieNo(int movieNo) {
-		this.movieNo = movieNo;
+	public void setTripNo(int tripNo) {
+		this.tripNo = tripNo;
 	}
 
-	public String getMovieName() {
-		return movieName;
+	public String getTripName() {
+		return tripName;
 	}
 
-	public void setMovieName(String movieName) {
-		this.movieName = movieName;
+	public void setTripName(String tripName) {
+		this.tripName = tripName;
 	}
 
 	public int getCategory() {

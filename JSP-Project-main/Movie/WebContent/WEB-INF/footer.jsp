@@ -17,15 +17,15 @@
         <div class="three wide column">
           <h4 class="ui inverted header">Services</h4>
           <div class="ui inverted link list">
-            <a href="/movieList.do?cat_no=1" class="item">액션</a>
-            <a href="/movieList.do?cat_no=2" class="item">로맨스</a>
-            <a href="/movieList.do?cat_no=3" class="item">코미디</a>
-            <a href="/movieList.do?cat_no=4" class="item">스릴러</a>
-            <a href="/movieList.do?cat_no=5" class="item">애니메이션</a>
+            <a href="/tipList.do?cat_no=1" class="item">액션</a>
+            <a href="/tipList.do?cat_no=2" class="item">로맨스</a>
+            <a href="/tipList.do?cat_no=3" class="item">코미디</a>
+            <a href="/tipList.do?cat_no=4" class="item">스릴러</a>
+            <a href="/tipList.do?cat_no=5" class="item">애니메이션</a>
           </div>
         </div>
         <div class="seven wide column">
-          <h4 class="ui inverted header">3조 영화예매</h4>
+          <h4 class="ui inverted header">2조 체험 예매</h4>
           <p>Copyrightⓒ스티어링 All Rights Reserved.</p>
         </div>
       </div>

@@ -72,7 +72,7 @@
 					<fmt:formatDate var="runDayandDate" value="${item.bookDate }" pattern="yyyy년 MM월 dd일 (HH시 mm분)"/>
 					<tr>
 						<td>${item.ticketNo}</td>
-						<td>${item.movieName}</td>
+						<td>${item.tripName}</td>
 						<td>${runDayandDate}</td>
 						<td>${item.schNo}번</td>
 						<td>${item.roomNo}관</td>

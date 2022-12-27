@@ -40,23 +40,23 @@
   			</div>
   			
   			<div class="item">
-  				<a href="/movieList.do?cat_no=1">액션</a>
+  				<a href="/tripList.do?cat_no=1">액션</a>
   			</div>
   			
   			<div class="item">
-  				<a href="/movieList.do?cat_no=2">로맨스</a>
+  				<a href="/tripList.do?cat_no=2">로맨스</a>
   			</div>
   			
   			<div class="item">
-  				<a href="/movieList.do?cat_no=3">코미디</a>
+  				<a href="/tripList.do?cat_no=3">코미디</a>
   			</div>
   			
   			<div class="item">
-  				<a href="/movieList.do?cat_no=4">스릴러</a>
+  				<a href="/tripList.do?cat_no=4">스릴러</a>
   			</div>
   			
   			<div class="item">
-  				<a href="/movieList.do?cat_no=5">애니메이션</a>
+  				<a href="/tripList.do?cat_no=5">애니메이션</a>
   			</div>
   			<div class="item">
   				<a href="/review.do">후기</a>

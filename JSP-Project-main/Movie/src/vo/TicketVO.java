@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class TicketVO {
 	private int ticketNo; 
-	private String movieName;
+	private String tripName;
 	private Timestamp bookDate;
 	private int schNo;
 	private int roomNo;
@@ -15,9 +15,9 @@ public class TicketVO {
 		
 	}
 	
-	public TicketVO(int ticketNo, String movieName, Timestamp bookDate, int schNo, int roomNo, int seatNo, String id) {
+	public TicketVO(int ticketNo, String tripName, Timestamp bookDate, int schNo, int roomNo, int seatNo, String id) {
 		this.ticketNo = ticketNo;
-		this.movieName = movieName;
+		this.tripName = tripName;
 		this.bookDate = bookDate;
 		this.schNo = schNo;
 		this.roomNo = roomNo;
@@ -33,12 +33,12 @@ public class TicketVO {
 		this.ticketNo = ticketNo;
 	}
 
-	public String getMovieName() {
-		return movieName;
+	public String getTripName() {
+		return tripName;
 	}
 
-	public void setMovieName(String movieName) {
-		this.movieName = movieName;
+	public void setTripName(String tripName) {
+		this.tripName = tripName;
 	}
 
 	public Timestamp getBookDate() {

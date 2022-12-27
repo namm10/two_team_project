@@ -1,6 +1,6 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="vo.ScheduleVO"%>
-<%@page import="vo.MovieVO"%>
+<%@page import="vo.TripVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -8,18 +8,16 @@
 <%@ include file="../header.jsp" %>
 
 <%
-	MovieVO movieInfo = new MovieVO();
+TripVO tripInfo = new TripVO();
 	
-	if(request.getAttribute("movieInfo") == null) {
+	if(request.getAttribute("tripInfo") == null) {
 		response.sendRedirect("/");
 	}else {
-		movieInfo = (MovieVO) request.getAttribute("movieInfo");
+		tripInfo = (TripVO) request.getAttribute("tripInfo");
 	}
 	
 	String cat = "";
 	String img = "";
-	
-
 %>
 
 
@@ -48,7 +46,7 @@
     <div class="main">
         <h2>영화 정보</h2>
 
-		<table class="ui inverted violet table movieInfoTable">
+		<table class="ui inverted violet table tripInfoTable">
 			<thead>
 				<tr>
 					<th>영화 번호</th>
@@ -59,9 +57,9 @@
 			</thead>
 			<tbody>
 				<%
-					img = movieInfo.getImg();
+					img = tripInfo.getImg();
 					
-					switch (movieInfo.getCategory()) {
+					switch (tripInfo.getCategory()) {
 					case 1:
 						cat = "액션";
 						break;
@@ -80,10 +78,10 @@
 					}
 				%>
 				<tr>
-					<td>No.<%=movieInfo.getMovieNo()%></td>
+					<td>No.<%=tripInfo.getTripNo()%></td>
 					<td><%=cat%></td>
-					<td><%=movieInfo.getMovieName()%></td>
-					<td><%=movieInfo.getInfo()%></td>
+					<td><%=tripInfo.getTripName()%></td>
+					<td><%=tripInfo.getInfo()%></td>
 				</tr>
 			</tbody>
 		</table>
@@ -91,7 +89,7 @@
 		<h2>영화 후기</h2>
 		
 
-		<div class="movieInfoBox">
+		<div class="tripInfoBox">
 			<div class="leftBox">
 				<img src="/images/<%=img%>" alt="<%=img%>">
 			</div>
@@ -120,7 +118,7 @@
 					</c:if>
 					
 					<c:if test="${userId != null }">
-					<form name="review" action="/reviewInsert.do?userId=${user.getId()}&movieNo=${mn}" method="post">
+					<form name="review" action="/reviewInsert.do?userId=${user.getId()}&tripNo=${mn}" method="post">
 					<div style="font-size:15px; padding:5px;"> ${user.getId()}님</div>
 						<textarea style="resize: none;width:100%;" name="txt" id="txt" placeholder="댓글을 입력하세요" onkeyup="counter()" ></textarea>
  						<div class="item" >
@@ -154,7 +152,7 @@
 							<td>${reviewList.writedate }</td>
 							<c:choose>
 								<c:when test="${ reviewList.id == user.getId()}">
-									<td><button style="color:blue; background:white; font-size:0.5em; border-radius:1em; padding:5px 20px;" onclick="location.href = '/deleteReview.do?num=${reviewList.num}&movieNo=${reviewList.movieNo}';">삭제</button>
+									<td><button style="color:blue; background:white; font-size:0.5em; border-radius:1em; padding:5px 20px;" onclick="location.href = '/deleteReview.do?num=${reviewList.num}&tripNo=${reviewList.tripNo}';">삭제</button>
 									</td>
 								</c:when>
 								<c:otherwise>

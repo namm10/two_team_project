@@ -8,7 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.MovieDAO;
+import dao.TripDAO;
 import vo.TicketVO;
 
 public class MyTicketController implements Controller {
@@ -19,7 +19,7 @@ public class MyTicketController implements Controller {
 		String id = req.getParameter("user");
 		
 		if (id != null) {
-			MovieDAO instance = MovieDAO.getInstance();
+			TripDAO instance = TripDAO.getInstance();
 			//예매(티켓) 정보를 담는 리스트 선언
 			ArrayList<TicketVO> myTicket = new ArrayList<TicketVO>();
 			

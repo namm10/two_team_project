@@ -1,7 +1,7 @@
 <%@page import="vo.TicketVO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="vo.ScheduleVO"%>
-<%@page import="vo.MovieVO"%>
+<%@page import="vo.TripVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

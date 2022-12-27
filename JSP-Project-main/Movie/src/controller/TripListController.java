@@ -8,10 +8,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.MovieDAO;
-import vo.MovieVO;
+import dao.TripDAO;
+import vo.TripVO;
 
-public class MovieListController implements Controller {
+public class TripListController implements Controller {
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServerException, IOException, ServletException {
@@ -21,11 +21,11 @@ public class MovieListController implements Controller {
 			category = Integer.parseInt(req.getParameter("cat_no"));
 		}
 		
-		MovieDAO instance = MovieDAO.getInstance();
-		ArrayList<MovieVO> movieList = instance.selectCategory(category);
+		TripDAO instance = TripDAO.getInstance();
+		ArrayList<TripVO> tripList = instance.selectCategory(category);
 
-		req.setAttribute("movieList", movieList);
-		req.getRequestDispatcher("/view/movieList.jsp").forward(req, resp);
+		req.setAttribute("tripList", tripList);
+		req.getRequestDispatcher("/view/tripList.jsp").forward(req, resp);
 		
 	}
 

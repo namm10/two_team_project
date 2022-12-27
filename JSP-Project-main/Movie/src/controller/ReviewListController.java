@@ -8,9 +8,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.MovieDAO;
+import dao.TripDAO;
 import dao.ReviewDAO;
-import vo.MovieVO;
+import vo.TripVO;
 import vo.ReviewVO;
 import vo.ScheduleVO;
 
@@ -20,21 +20,21 @@ public class ReviewListController implements Controller {
 	public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServerException, IOException, ServletException {		
 		
 	
-	if (req.getParameter("movieNo") != null) {
-		int movieNo = Integer.parseInt(req.getParameter("movieNo"));
+	if (req.getParameter("tripNo") != null) {
+		int tripNo = Integer.parseInt(req.getParameter("tripNo"));
 		/* int pageNo = Integer.parseInt(req.getParameter("pageNo")); */
 		
-		MovieDAO instance = MovieDAO.getInstance();
+		TripDAO instance = TripDAO.getInstance();
 		ReviewDAO instance1 = ReviewDAO.getInstance();
-		MovieVO movieInfo = instance.movieInfo(movieNo);
-		ArrayList<ReviewVO> reviewList = instance1.reviewList(movieNo);
-		int num = instance1.maxReviewNum(movieNo);
+		TripVO tripInfo = instance.tripInfo(tripNo);
+		ArrayList<ReviewVO> reviewList = instance1.reviewList(tripNo);
+		int num = instance1.maxReviewNum(tripNo);
 		
 		
 		if(reviewList != null) {
-			req.setAttribute("mn", movieNo);
+			req.setAttribute("mn", tripNo);
 			req.setAttribute("num", num);
-			req.setAttribute("movieInfo", movieInfo);
+			req.setAttribute("tripInfo", tripInfo);
 			req.setAttribute("list", reviewList);
 			req.getRequestDispatcher("/view/reviewList.jsp").forward(req, resp);
 		}

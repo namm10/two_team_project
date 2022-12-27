@@ -6,7 +6,7 @@ public class ReviewVO {
 	int num;
 	String id;
 	String content;
-	int movieNo;
+	int tripNo;
 	Date writedate;
 	public int getNum() {
 		return num;
@@ -26,11 +26,11 @@ public class ReviewVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public int getMovieNo() {
-		return movieNo;
+	public int gettripNo() {
+		return tripNo;
 	}
-	public void setMovieNo(int movieNo) {
-		this.movieNo = movieNo;
+	public void settripNo(int tripNo) {
+		this.tripNo = tripNo;
 	}
 	public Date getWritedate() {
 		return writedate;
@@ -38,12 +38,12 @@ public class ReviewVO {
 	public void setWritedate(Date writedate) {
 		this.writedate = writedate;
 	}
-	public ReviewVO(int num, String id, String content, int movieNo, Date writedate) {
+	public ReviewVO(int num, String id, String content, int tripNo, Date writedate) {
 		super();
 		this.num = num;
 		this.id = id;
 		this.content = content;
-		this.movieNo = movieNo;
+		this.tripNo = tripNo;
 		this.writedate = writedate;
 	}
 	

@@ -17,11 +17,11 @@
         <div class="three wide column">
           <h4 class="ui inverted header">Services</h4>
           <div class="ui inverted link list">
-            <a href="/movieList.do?cat_no=1" class="item">자연 농장</a>
-            <a href="/movieList.do?cat_no=2" class="item">동물 농장</a>
-            <a href="/movieList.do?cat_no=3" class="item">손꾸락 농장</a>
-            <a href="/movieList2.do?cat_no=4" class="item">Q&A</a>
-            <a href="/movieList.do?cat_no=5" class="item">후기</a>
+            <a href="/List.do?cat_no=1" class="item">자연 농장</a>
+            <a href="/List.do?cat_no=2" class="item">동물 농장</a>
+            <a href="/List.do?cat_no=3" class="item">손꾸락 농장</a>
+            <a href="/List2.do?cat_no=4" class="item">Q &amp; A</a>
+            <a href="/List.do?cat_no=5" class="item">후기</a>
           </div>
         </div>
         <div class="seven wide column">

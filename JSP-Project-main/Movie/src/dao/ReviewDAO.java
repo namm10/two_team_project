@@ -23,7 +23,7 @@ public class ReviewDAO {
 	
 	
 	//리뷰 목록 불러오기
-	public ArrayList<ReviewVO> reviewList(int movieNo) {
+	public ArrayList<ReviewVO> reviewList(int tripNo) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -32,16 +32,16 @@ public class ReviewDAO {
 		try {
 			conn = JdbcUtil.getConnection();
 
-			String query = "select * from  reviews where movieNo=? order by num desc";
+			String query = "select * from  reviews where tripNo=? order by num desc";
 			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, movieNo);
+			pstmt.setInt(1, tripNo);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				int num = rs.getInt("num");
 				String id = rs.getString("id");
 				String content = rs.getString("content");
 				Date writedate = rs.getDate("writedate");
-				ReviewVO reviewVO = new ReviewVO(num, id, content, movieNo, writedate);
+				ReviewVO reviewVO = new ReviewVO(num, id, content, tripNo, writedate);
 				list.add(reviewVO);
 			}
 			
@@ -55,16 +55,16 @@ public class ReviewDAO {
 		return list;
 	}
 	
-	public void insertReview(String txt, String id, int movieNo) {
+	public void insertReview(String txt, String id, int tripNo) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
 			conn = JdbcUtil.getConnection();
 			pstmt = conn.prepareStatement("INSERT INTO reviews VALUES(?, ?, ?, ?, SYSDATE)");
-			pstmt.setInt(1, maxReviewNum(movieNo)+1);
+			pstmt.setInt(1, maxReviewNum(tripNo)+1);
 			pstmt.setString(2, id);
 			pstmt.setString(3, txt);
-			pstmt.setInt(4,movieNo);
+			pstmt.setInt(4,tripNo);
 			
 			pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -75,7 +75,7 @@ public class ReviewDAO {
 		
 	}
 	
-	public int maxReviewNum(int movieNo) {
+	public int maxReviewNum(int tripNo) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -83,9 +83,9 @@ public class ReviewDAO {
 		int num=0;
 		try {
 			conn = JdbcUtil.getConnection();
-			String query = "select max(num) from  reviews where movieNo=?";
+			String query = "select max(num) from  reviews where tripNo=?";
 			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, movieNo);
+			pstmt.setInt(1, tripNo);
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
@@ -100,13 +100,13 @@ public class ReviewDAO {
 		return num;
 	}
 	
-	public void deleteReview(int num,int movieNo) {
+	public void deleteReview(int num,int tripNo) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
 			conn = JdbcUtil.getConnection();
-			pstmt = conn.prepareStatement("delete from reviews where movieNo = ? And num=?");
-			pstmt.setInt(1, movieNo);
+			pstmt = conn.prepareStatement("delete from reviews where tripNo = ? And num=?");
+			pstmt.setInt(1, tripNo);
 			pstmt.setInt(2, num);
 			pstmt.executeUpdate();
 			

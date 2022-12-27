@@ -8,7 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.MovieDAO;
+import dao.TripDAO;
 import vo.TicketVO;
 
 public class ChooseSeatController implements Controller {
@@ -20,7 +20,7 @@ public class ChooseSeatController implements Controller {
 		if (req.getParameter("schNo") != null) {
 			schNo = Integer.parseInt(req.getParameter("schNo"));
 			
-			MovieDAO instance = MovieDAO.getInstance();
+			TripDAO instance = TripDAO.getInstance();
 			//이미 예매된 좌석을 가리기 위해 예매 정보를 받아온다.
 			ArrayList<TicketVO> ticketList = instance.ticketList(schNo);
 			
