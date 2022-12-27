@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>영화 예매</title>
+<title>체험 예매</title>
 <link rel="stylesheet" href="/lib/style.css">
 <link rel="stylesheet" type="text/css" href="/lib/semantic.min.css">
 <script

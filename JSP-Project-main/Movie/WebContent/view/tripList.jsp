@@ -5,11 +5,6 @@
     pageEncoding="UTF-8"%>
 <%@ page session="true" %>
 <%@ include file="../header.jsp" %>
-<style>
-	.card{
-		margin: 1000px;
-	}
-</style>
 <%
 	ArrayList<TripVO> list = new ArrayList<TripVO>();
 
@@ -45,12 +40,7 @@
 						case 3 :
 							cat = "공예 체험";
 							break;
-						case 4 :
-							cat = "스릴러";
-							break;
-						case 5 :
-							cat = "애니메이션";
-							break;
+						
 					}
 			%>
                 <div class="card l_image" onclick="location.href = '/tripInfo.do?tripNo=<%=vo.getTripNo()%>';">

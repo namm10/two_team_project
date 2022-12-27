@@ -36,7 +36,9 @@
         background-color: #af28fe;
         color: #ffffff;
     }
-    .tip{text-align: right;, margin-top:100px;}
+    .tip{text-align: right;, margin-top:100px; }
+    .tripImage{width:50%;  margin-bottom:30px;}
+    
 </style>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -250,12 +252,7 @@ function autoLeftPad(num, digit) {
 					case 3:
 						cat = "공예 체험";
 						break;
-					case 4:
-						cat = "스릴러";
-						break;
-					case 5:
-						cat = "애니메이션";
-						break;
+					
 					}
 				%>
 				<tr>
@@ -271,8 +268,8 @@ function autoLeftPad(num, digit) {
 		<p class="tip">Tip: 원하는 시간대에 클릭하면 좌석 선택 페이지로 이동됩니다.</p>
 
 		<div class="tripInfoBox">
-			<div class="leftBox">
-				<img src="/images/<%=img%>" alt="<%=img%>">
+			<div class="leftbox2">
+				<img class="tripImage" src="/images/<%=img%>" alt="<%=img%>">
 			</div>
 
 			<div class="calendar_wrap">
