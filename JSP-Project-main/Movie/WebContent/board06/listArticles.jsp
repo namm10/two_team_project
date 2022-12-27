@@ -3,7 +3,6 @@
     isELIgnored="false" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="../header.jsp"%>
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 <%
   request.setCharacterEncoding("UTF-8");
@@ -21,7 +20,8 @@
 <body>
 <table align="center" border="1"  width="80%"  >
   <tr height="10" align="center"  bgcolor="lightgreen">
-     <td >글번호</td>             
+     <td >글번호</td>
+     <td >작성자</td>              
      <td >제목</td>
      <td >작성일</td>
   </tr>
@@ -39,6 +39,7 @@
     <c:forEach  var="article" items="${articlesList }" varStatus="articleNum" >
      <tr align="center">
 	<td width="5%">${articleNum.count}</td>
+	<td width="10%">${article.id }</td>
 	<td align='left'  width="35%">
 	    <span style="padding-right:30px"></span>     
 	   <c:choose>

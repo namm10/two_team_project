@@ -10,6 +10,11 @@
 <title>영화 예매</title>
 <link rel="stylesheet" href="/lib/style.css">
 <link rel="stylesheet" type="text/css" href="/lib/semantic.min.css">
+<style type="text/css">
+	.ui{
+	
+	}
+</style>
 <script
   src="https://code.jquery.com/jquery-3.1.1.min.js"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
@@ -40,19 +45,15 @@
   			</div>
   			
   			<div class="item">
-  				<a href="/movieList.do?cat_no=1">자연 농장</a>
+  				<a href="/movieList.do?cat_no=1">자연 체험</a>
   			</div>
   			
   			<div class="item">
-  				<a href="/movieList.do?cat_no=2">동물 농장</a>
+  				<a href="/movieList.do?cat_no=2">동물 체험</a>
   			</div>
   			
   			<div class="item">
-  				<a href="/movieList.do?cat_no=3">손꾸락 농장</a>
-  			</div>
-  			
-  			<div class="item">
-  				<a href="/movieList.do?cat_no=4">예약, 마이페이지</a>
+  				<a href="/movieList.do?cat_no=3">공예 체험</a>
   			</div>
   			
   			<div class="item">

@@ -1,6 +1,7 @@
 package sec03.brd07;
 
 import java.sql.Connection;
+
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,7 +21,7 @@ public class BoardDAO {
 		try {
 			Context ctx = new InitialContext();
 			Context envContext = (Context) ctx.lookup("java:/comp/env");
-			dataFactory = (DataSource) envContext.lookup("jdbc/oracle");
+			dataFactory = (DataSource) envContext.lookup("jdbc/market_db");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

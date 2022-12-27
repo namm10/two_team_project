@@ -24,7 +24,9 @@
 <style>
     .calendar {
         grid-area: a;
-        text-align:center; border: 1px solid #eaeaea;}
+        text-align:center; border: 1px solid #eaeaea;
+        margin-left: 100px; 	
+        }
     .calendar td { width:60px;height:50px; line-height: 50px; }
     .calendar td:hover{font-weight: bold;}
     .calendar thead td{font-weight: bold;}
@@ -34,6 +36,7 @@
         background-color: #af28fe;
         color: #ffffff;
     }
+    .tip{text-align: right;, margin-top:100px;}
 </style>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -195,7 +198,7 @@ function calendarChoiceDay(column) {
     // @param 선택일 체크 표시
     column.style.backgroundColor = "#af28fe";
     column.style.color = "#ffffff";
-
+    column.location,href="movieList.do";
     // @param 선택일 클래스명 변경
     column.classList.add("choiceDay");
 
@@ -222,20 +225,16 @@ function autoLeftPad(num, digit) {
 </script>
 
 <div class="ui container">
-    <div class="visual">
-        <img src="/images/logo.jpg" alt="visualImg">
-    </div>
-
     <div class="main">
-        <h2>영화 정보</h2>
+        <h2>체험 정보</h2>
 
 		<table class="ui inverted violet table movieInfoTable">
 			<thead>
 				<tr>
-					<th>영화 번호</th>
+					<th>체험 번호</th>
 					<th>카테고리</th>
 					<th>제목</th>
-					<th>영화 정보</th>
+					<th>체험 정보</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -243,13 +242,13 @@ function autoLeftPad(num, digit) {
 					img = movieInfo.getImg();	
 					switch (movieInfo.getCategory()) {
 					case 1:
-						cat = "액션";
+						cat = "자연 체험";
 						break;
 					case 2:
-						cat = "로맨스";
+						cat = "동물 체험";
 						break;
 					case 3:
-						cat = "코미디";
+						cat = "공예 체험";
 						break;
 					case 4:
 						cat = "스릴러";
@@ -268,8 +267,8 @@ function autoLeftPad(num, digit) {
 			</tbody>
 		</table>
 
-		<h2>관람 시간 선택</h2>
-		<p style="text-align: right;">Tip: 원하는 관람 시간대에 클릭하면 좌석 선택 페이지로 이동됩니다.</p>
+		<h2>시간 선택</h2>
+		<p class="tip">Tip: 원하는 시간대에 클릭하면 좌석 선택 페이지로 이동됩니다.</p>
 
 		<div class="movieInfoBox">
 			<div class="leftBox">

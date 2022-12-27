@@ -1,17 +1,19 @@
 package common;
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class JdbcUtil {
+	private Connection con;
 	public static Connection getConnection() {
 		Connection conn = null;
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "ezen", "12345");
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/market_db", "ezen", "12345");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
