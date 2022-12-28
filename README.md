@@ -24,7 +24,9 @@
 #### 유스케이스 다이어그램
 
 ![유스케이스다이어그램](https://user-images.githubusercontent.com/117965336/209775210-56c1afcd-2d7b-48df-b77b-a5800ce6e540.gif)
-<br> * * *<br>
+<br>
+* * *
+<br>
 #### 시퀀스 다이어그램
 
 ![시퀀스다이어그램](https://user-images.githubusercontent.com/117965336/209775265-d49054cd-8109-4a2e-956e-4ff4c15e4d3e.jpg)
