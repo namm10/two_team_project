@@ -1,4 +1,4 @@
-package dao;
+package bor;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -10,8 +10,6 @@ import java.util.List;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
-
-import vo.ArticleVO;
 
 public class BoardDAO {
 	private DataSource dataFactory;
@@ -32,10 +30,14 @@ public class BoardDAO {
 		List<ArticleVO> articlesList = new ArrayList<ArticleVO>();
 		try {
 			conn = dataFactory.getConnection();
-			String query = "SELECT LEVEL,articleNO,parentNO,title,content,id,writeDate" + " from t_board"
-					+ " START WITH  parentNO=0" + " CONNECT BY PRIOR articleNO=parentNO"
-					+ " ORDER SIBLINGS BY articleNO DESC";
-			System.out.println(query);
+			String query = "WITH RECURSIVE CTE_CONNECT_BY AS ("
+					 + "SELECT 1 AS LEVEL, S.* FROM t_board S WHERE parentNO=0"
+					 +"UNION ALL"
+					 +"SELECT LEVEL + 1 AS LEVEL, S.* FROM CTE_CONNECT_BY R INNER JOIN t_board S ON  r.articleNO=s.parentNO"
+					 + ")"
+					 + "SELECT LEVEL,articleNO,parentNO,title,content,id,writeDate"
+					 +"from CTE_CONNECT_BY"
+					 + "ORDER BY articleNO DESC";
 			pstmt = conn.prepareStatement(query);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -183,9 +185,12 @@ public class BoardDAO {
 			conn = dataFactory.getConnection();
 			String query = "DELETE FROM t_board ";
 			query += " WHERE articleNO in (";
-			query += "  SELECT articleNO FROM  t_board ";
-			query += " START WITH articleNO = ?";
-			query += " CONNECT BY PRIOR  articleNO = parentNO )";
+			query += "WITH RECURSIVE CTE_CONNECT_BY AS (";
+			query += " SELECT 1 AS LEVEL, S.* FROM t_board S WHERE articleNO = ?";
+			query += " UNION ALL";
+			query += " SELECT LEVEL + 1 AS LEVEL, S.* FROM CTE_CONNECT_BY R INNER JOIN t_board S ON   r.articleNO = s.parentNO";
+			query += " ) ALL";
+			query += " SELECT articleNO FROM  cte_connect_by)";
 			System.out.println(query);
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, articleNO);
@@ -201,9 +206,11 @@ public class BoardDAO {
 		List<Integer> articleNOList = new ArrayList<Integer>();
 		try {
 			conn = dataFactory.getConnection();
-			String query = "SELECT articleNO FROM  t_board  ";
-			query += " START WITH articleNO = ?";
-			query += " CONNECT BY PRIOR  articleNO = parentNO";
+			String query = "WITH RECURSIVE CTE_CONNECT_BY AS ( ";
+			query += " SELECT 1 AS LEVEL, S.* FROM t_board S WHERE articleNO = ?";
+			query += " UNION ALL";
+			query += " SELECT LEVEL + 1 AS LEVEL, S.* FROM CTE_CONNECT_BY R INNER JOIN t_board S ON   r.articleNO = s.parentNO)";
+			query += " SELECT articleNO FROM  CTE_CONNECT_BY";
 			System.out.println(query);
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, articleNO);

@@ -1,9 +1,6 @@
-package controller;
+package bor;
 
 import java.util.List;
-
-import sec03.brd07.ArticleVO;
-import sec03.brd07.BoardDAO;
 
 public class BoardService {
 	BoardDAO boardDAO;

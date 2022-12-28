@@ -31,13 +31,13 @@ ArrayList<TripVO> list = new ArrayList<TripVO>();
             			
             			switch (vo.getCategory()) {
             				case 1 :
-            					cat = "액션";
+            					cat = "자연 체험";
             					break;
             				case 2 :
-            					cat = "로맨스";
+            					cat = "동물 체험";
             					break;
             				case 3 :
-            					cat = "코미디";
+            					cat = "공예 체험";
             					break;       	
             			}
             %>

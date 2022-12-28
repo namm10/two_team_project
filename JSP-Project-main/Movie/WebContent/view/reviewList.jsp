@@ -19,7 +19,19 @@ TripVO tripInfo = new TripVO();
 	String cat = "";
 	String img = "";
 %>
+<style>
+	.dang{
+		margin-left: 170px;
+	}
+	.tab{
+    	background-color: #5c8acc;
+    	
+    }
+    .sub_tab{
+    	background-color: #3965ae;
+    }
 
+</style>
 
 <script>
  		function counter(){
@@ -44,15 +56,15 @@ TripVO tripInfo = new TripVO();
     </div> -->
 
     <div class="main">
-        <h2>영화 정보</h2>
+        <h2>체험 정보</h2>
 
 		<table class="ui inverted violet table tripInfoTable">
-			<thead>
+			<thead class="tab">
 				<tr>
-					<th>영화 번호</th>
+					<th>체험 번호</th>
 					<th>카테고리</th>
 					<th>제목</th>
-					<th>영화 정보</th>
+					<th>체험 정보</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -61,23 +73,18 @@ TripVO tripInfo = new TripVO();
 					
 					switch (tripInfo.getCategory()) {
 					case 1:
-						cat = "액션";
+						cat = "자연 체험";
 						break;
 					case 2:
-						cat = "로맨스";
+						cat = "동물 체험";
 						break;
 					case 3:
-						cat = "코미디";
+						cat = "공예 체험";
 						break;
-					case 4:
-						cat = "스릴러";
-						break;
-					case 5:
-						cat = "애니메이션";
-						break;
+					
 					}
 				%>
-				<tr>
+				<tr class="sub_tab">
 					<td>No.<%=tripInfo.getTripNo()%></td>
 					<td><%=cat%></td>
 					<td><%=tripInfo.getTripName()%></td>
@@ -86,16 +93,16 @@ TripVO tripInfo = new TripVO();
 			</tbody>
 		</table>
 
-		<h2>영화 후기</h2>
+		<h2>체험 후기</h2>
 		
 
 		<div class="tripInfoBox">
 			<div class="leftBox">
-				<img src="/images/<%=img%>" alt="<%=img%>">
+				<img class="dang" src="/images/<%=img%>" alt="<%=img%>">
 			</div>
 
 			<div class="rightBox">
-			<p >${num}개의 댓글</p>
+			<p >${num}개의 후기</p>
 				<hr style="border: solid 1px black;">
 				<c:set var="userId" value="${user.getId()}" />
 					
@@ -120,7 +127,7 @@ TripVO tripInfo = new TripVO();
 					<c:if test="${userId != null }">
 					<form name="review" action="/reviewInsert.do?userId=${user.getId()}&tripNo=${mn}" method="post">
 					<div style="font-size:15px; padding:5px;"> ${user.getId()}님</div>
-						<textarea style="resize: none;width:100%;" name="txt" id="txt" placeholder="댓글을 입력하세요" onkeyup="counter()" ></textarea>
+						<textarea style="resize: none;width:100%;" name="txt" id="txt" placeholder="후기를 입력하세요" onkeyup="counter()" ></textarea>
  						<div class="item" >
  								<div style="float:left;">
  									<span style="color:#aaa;" id="counting">0</span>/50자

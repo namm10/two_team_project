@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<footer>
+<style>
+	
+</style>
+<footer class="foot">
   <div class="ui inverted vertical footer segment">
     <div class="ui container">
       <div class="ui stackable inverted divided equal height stackable grid">
@@ -25,7 +27,7 @@
           </div>
         </div>
         <div class="seven wide column">
-          <h4 class="ui inverted header">2조 행사예매</h4>
+          <h4 class="ui inverted header">2조</h4>
           <p>Copyrightⓒ스티어링 All Rights Reserved.</p>
         </div>
       </div>

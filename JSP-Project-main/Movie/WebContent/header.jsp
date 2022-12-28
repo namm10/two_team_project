@@ -20,6 +20,12 @@
 		width: 1100px;
 		margin: auto;
 	}
+	.fon:hover{
+		font-weight: bold;
+	}
+	.item{
+		border: none;
+	}
 </style>
 <script
   src="https://code.jquery.com/jquery-3.1.1.min.js"
@@ -46,27 +52,27 @@
 <div class="ui container">
 	<header>		
 		<div class="ui menu">
-			<div class="item">
+			<div class="item ">
     			<div class="ui blue button" onclick="location.href = '/';">HOME</div>
   			</div>
   			
-  			<div class="item">
-  				<a href="/tripList.do?cat_no=1">자연 체험</a>
+  			<div class="item box">
+  				<a class="fon" href="/tripList.do?cat_no=1">자연 체험</a>
   			</div>
   			
   			<div class="item">
-  				<a href="/tripList.do?cat_no=2">동물 체험</a>
+  				<a class="fon" href="/tripList.do?cat_no=2">동물 체험</a>
   			</div>
   			
   			<div class="item">
-  				<a href="/tripList.do?cat_no=3">공예 체험</a>
+  				<a class="fon" href="/tripList.do?cat_no=3">공예 체험</a>
   			</div>
   			
   			<div class="item">
-  				<a href="/board/listArticles.do">Q &amp; A</a>
+  				<a class="fon" href="/board/listArticles.do">Q &amp; A</a>
   			</div>
   			<div class="item">
-  				<a href="/review.do">후기</a>
+  				<a class="fon" href="/review.do">후기</a>
   			</div>
 			
 <%			

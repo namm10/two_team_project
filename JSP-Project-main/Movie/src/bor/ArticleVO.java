@@ -1,7 +1,6 @@
-package sec03.brd07;
+package bor;
 
 import java.io.UnsupportedEncodingException;
-
 import java.net.URLEncoder;
 import java.sql.Date;
 
@@ -94,7 +93,7 @@ public class ArticleVO {
 	public void setImageFileName(String imageFileName) {
 		try {
 			if(imageFileName!=null && imageFileName.length()!=0) {
-				this.imageFileName = URLEncoder.encode(imageFileName, "UTF-8");  //파일이름에 특수문자가 있을 경우 인코딩합니다.
+				this.imageFileName = URLEncoder.encode(imageFileName, "UTF-8");  //�����̸��� Ư�����ڰ� ���� ��� ���ڵ��մϴ�.
 			}
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();

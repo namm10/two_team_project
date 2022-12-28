@@ -12,9 +12,6 @@
 %>
 
 <div class="ui container">
-	<div class="visual">
-		<img src="/images/logo.jpg" alt="visualImg">
-	</div>
 
 	<div class="main">
 		<h2>로그인</h2>

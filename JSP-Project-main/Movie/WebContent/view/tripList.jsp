@@ -14,13 +14,7 @@
 		list = (ArrayList) request.getAttribute("tripList");
 	}
 %>
-
 <div class="ui container">
-    <div class="visual">
-        <!-- <img src="./images/logo.jpg" alt="visualImg"> -->
-        <!--  <video width="1120" height="630" src="video/trip.mp4" controls autoplay muted loop></video>-->
-    </div>
-
     <div class="main">
         <h2>전체 체험 목록</h2>
 
@@ -43,10 +37,11 @@
 						
 					}
 			%>
-                <div class="card l_image" onclick="location.href = '/tripInfo.do?tripNo=<%=vo.getTripNo()%>';">
+                <div id="ddd" class="card l_image" onclick="location.href = '/tripInfo.do?tripNo=<%=vo.getTripNo()%>';">
                     <div class="image">
-                        <img src="/images/<%=vo.getImg()%>">
+                        <img class="ddd" src="/images/<%=vo.getImg()%>">
                     </div>
+                    
                     <div class="content"> 
                         <div class="header"><%=vo.getTripName() %></div>
 
@@ -69,6 +64,9 @@
                             No: <%=vo.getTripNo() %>
                         </span>
                     </div>
+                </div>
+                <div>
+                    
                 </div>
             <% } %>
             </div>

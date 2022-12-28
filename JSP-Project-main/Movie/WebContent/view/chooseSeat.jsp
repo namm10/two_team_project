@@ -27,40 +27,14 @@
 %>
 
 <div class="ui container">
-    <div class="visual">
-        <img src="/images/logo.jpg" alt="visualImg">
-    </div>
-
     <div class="main" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
-        <h2>좌석 선택하기</h2>
+        
+        <div>
+       			<img src="images/logo.png">
+        </div>
+        <h2>체험 구역 선택</h2>
         
         <div class="seatBox">
-        <%-- <%
-        for(int i = 1; i <= 25; i++) {
-        	boolean status = false;
-        	
-        	for (TicketVO item : ticketList) {
-        		if(item.getSeatNo() == i) {
-        			status = true;
-        		}
-        	}
-        	
-        	if(status == true) {
-        %>
-        	<button class="ui pink basic button" disabled><%= i %></button>
-        <%
-        	}else {
-       	%>
-       		<button class="ui blue basic button" data-seatno="<%=i %>"><%= i %></button>
-       	<%
-        	}
-        	if(i % 5 == 0) {
-        %>
-        	<br>
-        <%
-        	}
-        }        
-        %> --%>
        		<c:forEach var="i" begin="1" end="25">
         		<c:set var="status" value="0"/>
         		<fmt:formatNumber value="${i}" var="num" type="number"/>

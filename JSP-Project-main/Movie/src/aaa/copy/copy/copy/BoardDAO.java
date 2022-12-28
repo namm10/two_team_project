@@ -1,4 +1,4 @@
-package sec03.brd07;
+package aaa.copy.copy.copy;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -30,23 +30,14 @@ public class BoardDAO {
 		List<ArticleVO> articlesList = new ArrayList<ArticleVO>();
 		try {
 			conn = dataFactory.getConnection();
-			String query = "with recursive cte as\r\n"
-					+ "	(\r\n"
-					+ "	    select articleNO, parentNO, title, content, imageFileName, writedate, id,\r\n"
-					+ "       cast(id as char(100)) lvl\r\n"
-					+ "	    from t_board\r\n"
-					+ "	    where parentNo=0\r\n"
-					+ "    /* select 문의 결합을 위한 union all */\r\n"
-					+ "		union all\r\n"
-					+ "        \r\n"
-					+ "		select a.articleNO, a.parentNO, a.title, a.content, a.imageFileName, a.writedate, a.id,\r\n"
-					+ "		concat(b.lvl, ',', a.articleno) lvl\r\n"
-					+ "		from t_board a\r\n"
-					+ "		inner join cte b on a.parentno = b.articleno \r\n"
-					+ "	)\r\n"
-					+ "		select articleno, parentno, concat(repeat('&nbsp;&nbsp', parentNO), 'ㄴ', title) as title, parentno, id, writedate\r\n"
-					+ "		from cte\r\n"
-					+ "		order by articleNO desc;" ;
+			String query = "WITH RECURSIVE CTE_CONNECT_BY AS (\r\n"
+			 + "SELECT 1 AS LEVEL, S.* FROM t_board S WHERE parentNO=0\r\n"
+			 +"UNION ALL\r\n"
+			 +"SELECT LEVEL + 1 AS LEVEL, S.* FROM CTE_CONNECT_BY R INNER JOIN t_board S ON  r.articleNO=s.parentNO\r\n"
+			 + ")\r\n"
+			 + "SELECT LEVEL,articleNO,parentNO,title,content,id,writeDate"
+			 +"from cte_connect_by"
+			 + "ORDER BY articleNO DESC";
 		
 			System.out.println(query);
 			pstmt = conn.prepareStatement(query);
@@ -196,9 +187,12 @@ public class BoardDAO {
 			conn = dataFactory.getConnection();
 			String query = "DELETE FROM t_board ";
 			query += " WHERE articleNO in (";
-			query += "  SELECT articleNO FROM  t_board ";
-			query += " START WITH articleNO = ?";
-			query += " CONNECT BY PRIOR  articleNO = parentNO )";
+			query += "WITH RECURSIVE CTE_CONNECT_BY AS (";
+			query += " SELECT 1 AS LEVEL, S.* FROM t_board S WHERE articleNO = ?";
+			query += " UNION ALL";
+			query += " SELECT LEVEL + 1 AS LEVEL, S.* FROM CTE_CONNECT_BY R INNER JOIN t_board S ON   r.articleNO = s.parentNO";
+			query += " ) ALL";
+			query += " SELECT articleNO FROM  cte_connect_by)";
 			System.out.println(query);
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, articleNO);
@@ -214,9 +208,11 @@ public class BoardDAO {
 		List<Integer> articleNOList = new ArrayList<Integer>();
 		try {
 			conn = dataFactory.getConnection();
-			String query = "SELECT articleNO FROM  t_board  ";
-			query += " START WITH articleNO = ?";
-			query += " CONNECT BY PRIOR  articleNO = parentNO";
+			String query = "WITH RECURSIVE CTE_CONNECT_BY AS ( ";
+			query += " SELECT 1 AS LEVEL, S.* FROM t_board S WHERE articleNO = ?";
+			query += " UNION ALL";
+			query += " SELECT LEVEL + 1 AS LEVEL, S.* FROM CTE_CONNECT_BY R INNER JOIN t_board S ON   r.articleNO = s.parentNO)";
+			query += " SELECT articleNO FROM  cte_connect_by";
 			System.out.println(query);
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, articleNO);

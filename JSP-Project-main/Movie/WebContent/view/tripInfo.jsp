@@ -22,10 +22,12 @@
 	String img = "";
 %>
 <style>
+	body{position: relative;}
     .calendar {
         grid-area: a;
-        text-align:center; border: 1px solid #eaeaea;
-        margin-left: 100px; 	
+        text-align:center; border: 1px solid #eaeaea; 
+        position: absolute;
+        top:450px; right:20%;
         }
     .calendar td { width:60px;height:50px; line-height: 50px; }
     .calendar td:hover{font-weight: bold;}
@@ -38,7 +40,22 @@
     }
     .tip{text-align: right;, margin-top:100px; }
     .tripImage{width:50%;  margin-bottom:30px;}
-    
+    .tab{
+    	background-color: #5c8acc;
+    	
+    }
+    .sub_tab{
+    	background-color: #3965ae;
+    }
+    .box1{
+    	text-indent: 10px;
+    }
+    .box2{
+    	text-indent: 20px;
+    }
+    .box3{
+    	text-indent: 20px;
+    }
 </style>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -231,8 +248,8 @@ function autoLeftPad(num, digit) {
         <h2>체험 정보</h2>
 
 		<table class="ui inverted violet table tripInfoTable">
-			<thead>
-				<tr>
+			<thead class="tab">
+				<tr >
 					<th>체험 번호</th>
 					<th>카테고리</th>
 					<th>제목</th>
@@ -255,7 +272,7 @@ function autoLeftPad(num, digit) {
 					
 					}
 				%>
-				<tr>
+				<tr class="sub_tab">
 					<td>No.<%=tripInfo.getTripNo()%></td>
 					<td><%=cat%></td>
 					<td><%=tripInfo.getTripName()%></td>
@@ -268,7 +285,7 @@ function autoLeftPad(num, digit) {
 		<p class="tip">Tip: 원하는 시간대에 클릭하면 좌석 선택 페이지로 이동됩니다.</p>
 
 		<div class="tripInfoBox">
-			<div class="leftbox2">
+			<div>
 				<img class="tripImage" src="/images/<%=img%>" alt="<%=img%>">
 			</div>
 
@@ -296,6 +313,37 @@ function autoLeftPad(num, digit) {
 				<tbody></tbody>
 				</table>
 			</div>
+			<div class="rightBox">
+				<table class="ui inverted blue table">
+					<thead class="tab">
+						<tr>
+							<th>스케줄 번호</th>
+							<th>체험 날짜</th>
+							<th>체험 시간</th>
+							<th>체험 장소</th>
+							<th>잔여 인원</th>
+						</tr>
+					</thead>
+					<tbody  class="sub_tab">
+						<%
+						for (ScheduleVO item : schList) {
+							SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 (HH시 mm분)");
+							String datetime = sdf.format(item.getRunDay());
+						%>
+						<tr onclick="location.href = '/chooseSeat.do?schNo=<%=item.getSchNo()%>&roomNo=<%=item.getRoomNo() %>';">
+							<td>No.<%=item.getSchNo() %></td>
+							<td><%=datetime %></td>
+							<td class="box1"><%=item.getRuntime() %>분</td>				
+							<td class="box2"><%=item.getRoomNo() %></td>
+							<td class="box3"><%=25 - item.getSeatCnt() %></td>
+						</tr>
+						<%
+							}
+						%>
+					</tbody>
+				</table>
+			</div>
+		</div>
 		</div>
     </div>
 </div>
