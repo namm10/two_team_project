@@ -35,7 +35,8 @@
 <br><br><br><br>
 ## 6. 코드구조 MVC
 
-(https://user-images.githubusercontent.com/117965336/209775782-b257e12d-039d-4a37-83b3-adfdb52cab02.gif)
+![코드구조MVC2](https://user-images.githubusercontent.com/117965336/209775927-c01b6454-d53d-4355-8ee5-60064b27d64c.gif)
+
 
 <br><br><br><br>
 ## 7. 기능 구현
