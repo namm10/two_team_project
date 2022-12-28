@@ -33,14 +33,19 @@
 
 <img width="644" alt="ERD" src="https://user-images.githubusercontent.com/117965336/209775308-09a08904-c2b1-4039-b470-6375e17dbeee.png">
 <br><br><br><br>
-## 6. 기능 구현
+## 6. 코드구조 MVC
+
+![코드구조MVC2](https://user-images.githubusercontent.com/117965336/209775782-b257e12d-039d-4a37-83b3-adfdb52cab02.gif)
+
+<br><br><br><br>
+## 7. 기능 구현
 * 회원가입
 * 로그인
 * 예약
 * 예약내역확인
 * 이용후기 작성
 <br><br><br><br>
-## 7. 역할 분담
+## 8. 역할 분담
 |팀원명|역할
 |:---:|:---:
 |유세영|프론트엔드, 다이어그램, 마크다운
