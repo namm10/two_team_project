@@ -11,7 +11,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import sec03.brd07.ArticleVO;
+import vo.ArticleVO;
 
 public class BoardDAO {
 	private DataSource dataFactory;
@@ -22,7 +22,7 @@ public class BoardDAO {
 		try {
 			Context ctx = new InitialContext();
 			Context envContext = (Context) ctx.lookup("java:/comp/env");
-			dataFactory = (DataSource) envContext.lookup("jdbc/oracle");
+			dataFactory = (DataSource) envContext.lookup("jdbc/market_db");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

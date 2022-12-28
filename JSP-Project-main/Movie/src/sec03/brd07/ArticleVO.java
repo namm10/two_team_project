@@ -1,6 +1,7 @@
 package sec03.brd07;
 
 import java.io.UnsupportedEncodingException;
+
 import java.net.URLEncoder;
 import java.sql.Date;
 
@@ -93,7 +94,7 @@ public class ArticleVO {
 	public void setImageFileName(String imageFileName) {
 		try {
 			if(imageFileName!=null && imageFileName.length()!=0) {
-				this.imageFileName = URLEncoder.encode(imageFileName, "UTF-8");  //ÆÄÀÏÀÌ¸§¿¡ Æ¯¼ö¹®ÀÚ°¡ ÀÖÀ» °æ¿ì ÀÎÄÚµùÇÕ´Ï´Ù.
+				this.imageFileName = URLEncoder.encode(imageFileName, "UTF-8");  //íŒŒì¼ì´ë¦„ì— íŠ¹ìˆ˜ë¬¸ìê°€ ìˆì„ ê²½ìš° ì¸ì½”ë”©í•©ë‹ˆë‹¤.
 			}
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();

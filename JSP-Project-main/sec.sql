@@ -26,6 +26,26 @@ CREATE TABLE MEMBER(
 	birth DATE 
 );
 
+CREATE TABLE t_member(
+    id VARCHAR(20) ,
+    pwd VARCHAR(10),
+    name VARCHAR(50),
+    email VARCHAR(50),
+    joinDate datetime DEFAULT now(),
+    CONSTRAINT FK_id FOREIGN KEY(id)
+    REFERENCES member(id)
+);
+-- 회원 정보 추가
+INSERT INTO t_member
+VALUES('hong', '1212', '홍길동', 'hong@gmail.com', sysdate);
+
+INSERT INTO t_member
+VALUES('lee', '1212', '이순신', 'lee@test.com', sysdate);
+
+INSERT INTO t_member
+VALUES('kim', '1212', '김유신', 'kim@jweb.com', sysdate);
+COMMIT;
+
 CREATE TABLE t_Board(
     articleNO int(10) primary key,
     parentNO int(10) DEFAULT 0,

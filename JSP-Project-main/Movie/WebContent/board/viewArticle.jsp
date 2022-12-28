@@ -20,7 +20,7 @@
    <script  src="http://code.jquery.com/jquery-latest.min.js"></script> 
    <script type="text/javascript" >
      function backToList(obj){
-	    obj.action="${contextPath}/board/listArticles.do";
+	    obj.action="${contextPath}/board06/listArticles.jsp";
 	    obj.submit();
      }
  
@@ -33,7 +33,7 @@
 	 }
 	 
 	 function fn_modify_article(obj){
-		 obj.action="${contextPath}/board/modArticle.do";
+		 obj.action="${contextPath}/board06/modArticle.jsp";
 		 obj.submit();
 	 }
 	 
@@ -149,9 +149,9 @@
   <tr  id="tr_btn"    >
    <td colspan="2" align="center">
 	    <input type=button value="수정하기" onClick="fn_enable(this.form)">
-	    <input type=button value="삭제하기" onClick="fn_remove_article('${contextPath}/board/removeArticle.do', ${article.articleNO})">
+	    <input type=button value="삭제하기" onClick="fn_remove_article('${contextPath}/board06/removeArticle.jsp', ${article.articleNO})">
 	    <input type=button value="리스트로 돌아가기"  onClick="backToList(this.form)">
-	     <input type=button value="답글쓰기"  onClick="fn_reply_form('${contextPath}/board/replyForm.do', ${article.articleNO})">
+	     <input type=button value="답글쓰기"  onClick="fn_reply_form('${contextPath}/board06/replyForm.jsp', ${article.articleNO})">
    </td>
   </tr>
  </table>

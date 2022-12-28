@@ -1,7 +1,6 @@
 package sec03.brd07;
 
 import java.sql.Connection;
-
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -31,9 +30,24 @@ public class BoardDAO {
 		List<ArticleVO> articlesList = new ArrayList<ArticleVO>();
 		try {
 			conn = dataFactory.getConnection();
-			String query = "SELECT LEVEL,articleNO,parentNO,title,content,id,writeDate" + " from t_board"
-					+ " START WITH  parentNO=0" + " CONNECT BY PRIOR articleNO=parentNO"
-					+ " ORDER SIBLINGS BY articleNO DESC";
+			String query = "with recursive cte as\r\n"
+					+ "	(\r\n"
+					+ "	    select articleNO, parentNO, title, content, imageFileName, writedate, id,\r\n"
+					+ "       cast(id as char(100)) lvl\r\n"
+					+ "	    from t_board\r\n"
+					+ "	    where parentNo=0\r\n"
+					+ "    /* select 문의 결합을 위한 union all */\r\n"
+					+ "		union all\r\n"
+					+ "        \r\n"
+					+ "		select a.articleNO, a.parentNO, a.title, a.content, a.imageFileName, a.writedate, a.id,\r\n"
+					+ "		concat(b.lvl, ',', a.articleno) lvl\r\n"
+					+ "		from t_board a\r\n"
+					+ "		inner join cte b on a.parentno = b.articleno \r\n"
+					+ "	)\r\n"
+					+ "		select articleno, parentno, concat(repeat('&nbsp;&nbsp', parentNO), 'ㄴ', title) as title, parentno, id, writedate\r\n"
+					+ "		from cte\r\n"
+					+ "		order by articleNO desc;" ;
+		
 			System.out.println(query);
 			pstmt = conn.prepareStatement(query);
 			ResultSet rs = pstmt.executeQuery();

@@ -21,7 +21,7 @@ ArrayList<TripVO> list = new ArrayList<TripVO>();
     </div> -->
 
     <div class="main">
-        <h2>영화 후기 보기 (해당 영화를 선택해 주세요.)</h2>
+        <h2>체험 후기 보기 (해당 체험를 선택해 주세요.)</h2>
 
         <div class="tripList">
             <div class="ui link cards unit">
@@ -38,13 +38,7 @@ ArrayList<TripVO> list = new ArrayList<TripVO>();
             					break;
             				case 3 :
             					cat = "코미디";
-            					break;
-            				case 4 :
-            					cat = "스릴러";
-            					break;
-            				case 5 :
-            					cat = "애니메이션";
-            					break;
+            					break;       	
             			}
             %>
                 <div class="card" onclick="location.href = '/reviewList.do?tripNo=<%=vo.getTripNo()%>';">

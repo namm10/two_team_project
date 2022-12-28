@@ -34,26 +34,15 @@ public class BoardController extends HttpServlet {
 	BoardService boardService;
 	ArticleVO articleVO;
 
-	/**
-	 * @see Servlet#init(ServletConfig)
-	 */
 	public void init(ServletConfig config) throws ServletException {
 		boardService = new BoardService();
 		articleVO = new ArticleVO();
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doHandle(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doHandle(request, response);
 	}
@@ -70,13 +59,13 @@ public class BoardController extends HttpServlet {
 			if (action == null) {
 				articlesList = boardService.listArticles();
 				request.setAttribute("articlesList", articlesList);
-				nextPage = "/board06/listArticles.jsp";
+				nextPage = "/board/listArticles.jsp";
 			} else if (action.equals("/listArticles.do")) {
 				articlesList = boardService.listArticles();
 				request.setAttribute("articlesList", articlesList);
-				nextPage = "/board06/listArticles.jsp";
+				nextPage = "/board/listArticles.jsp";
 			} else if (action.equals("/articleForm.do")) {
-				nextPage = "/board06/articleForm.jsp";
+				nextPage = "/board/articleForm.jsp";
 			} else if (action.equals("/addArticle.do")) {
 				int articleNO = 0;
 				Map<String, String> articleMap = upload(request, response);
@@ -105,7 +94,7 @@ public class BoardController extends HttpServlet {
 				String articleNO = request.getParameter("articleNO");
 				articleVO = boardService.viewArticle(Integer.parseInt(articleNO));
 				request.setAttribute("article", articleVO);
-				nextPage = "/board06/viewArticle.jsp";
+				nextPage = "/board/viewArticle.jsp";
 			} else if (action.equals("/modArticle.do")) {
 				Map<String, String> articleMap = upload(request, response);
 				int articleNO = Integer.parseInt(articleMap.get("articleNO"));
@@ -152,7 +141,7 @@ public class BoardController extends HttpServlet {
 				int parentNO = Integer.parseInt(request.getParameter("parentNO"));
 				session = request.getSession();
 				session.setAttribute("parentNO", parentNO);
-				nextPage = "/board06/replyForm.jsp";
+				nextPage = "/board/replyForm.jsp";
 			} else if (action.equals("/addReply.do")) {
 				session = request.getSession();
 				int parentNO = (Integer) session.getAttribute("parentNO");

@@ -20,7 +20,7 @@
             <a href="/List.do?cat_no=1" class="item">자연 농장</a>
             <a href="/List.do?cat_no=2" class="item">동물 농장</a>
             <a href="/List.do?cat_no=3" class="item">손꾸락 농장</a>
-            <a href="/List2.do?cat_no=4" class="item">Q &amp; A</a>
+            <a href="/board/listArticles.do" class="item">Q &amp; A</a>
             <a href="/List.do?cat_no=5" class="item">후기</a>
           </div>
         </div>
