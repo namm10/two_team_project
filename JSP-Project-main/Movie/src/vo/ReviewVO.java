@@ -26,10 +26,10 @@ public class ReviewVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public int gettripNo() {
+	public int getTripNo() {
 		return tripNo;
 	}
-	public void settripNo(int tripNo) {
+	public void setTripNo(int tripNo) {
 		this.tripNo = tripNo;
 	}
 	public Date getWritedate() {

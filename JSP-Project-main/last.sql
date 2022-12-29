@@ -279,12 +279,28 @@ SELECT articleNO FROM  CTE_CONNECT_BY
 
 WITH RECURSIVE CTE_CONNECT_BY AS (
 SELECT 1 AS LEVEL, S.* FROM t_board S WHERE parentNO=0
-UNION ALL
-SELECT LEVEL + 1 AS LEVEL, S.* FROM CTE_CONNECT_BY R INNER JOIN t_board S ON  r.articleNO=s.parentNO
-)
+UNION
+SELECT LEVEL + 1 AS LEVEL, S.* FROM CTE_CONNECT_BY R INNER JOIN t_board S ON  r.articleNO=s.parentNO)
 SELECT LEVEL,articleNO,parentNO,title,content,id,writeDate
 from cte_connect_by
 ORDER BY articleNO DESC;
+
+	with recursive cte as
+	(
+	    select articleNO, parentNO, title, content, imageFileName, writedate, id,
+        cast(id as char(100)) lvl
+	    from t_board
+	    where parentNo=0
+		union all
+		select a.articleNO, a.parentNO, a.title, a.content, a.imageFileName, a.writedate, a.id,
+		concat(b.lvl, ',', a.articleno) lvl
+		from t_board a
+		inner join cte b on a.parentno = b.articleno 
+	)
+		select articleno, parentno, concat(repeat('&nbsp;&nbsp', parentNO), title) as title, parentno, id, writedate
+		from cte
+		order by articleNO desc;
+        
 
 WITH RECURSIVE CTE_CONNECT_BY AS (
 SELECT 1 AS LEVEL, S.* FROM t_board S WHERE articleNO = ?

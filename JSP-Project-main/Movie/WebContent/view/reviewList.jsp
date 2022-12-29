@@ -51,10 +51,6 @@ TripVO tripInfo = new TripVO();
 </script>
 
 <div class="ui container">
-   <!--  <div class="visual">
-        <img src="/images/logo.jpg" alt="visualImg">
-    </div> -->
-
     <div class="main">
         <h2>체험 정보</h2>
 
@@ -72,17 +68,26 @@ TripVO tripInfo = new TripVO();
 					img = tripInfo.getImg();
 					
 					switch (tripInfo.getCategory()) {
-					case 1:
-						cat = "자연 체험";
-						break;
-					case 2:
-						cat = "동물 체험";
-						break;
-					case 3:
-						cat = "공예 체험";
-						break;
 					
-					}
+		               case 1:
+		                  cat = "액션";
+		                  break;
+		               case 2:
+		                  cat = "로맨스";
+		                  break;
+		               case 3:
+		                  cat = "코미디";
+		                  break;
+		               case 4:
+		                  cat = "스릴러";
+		                  break;
+		               case 5:
+		                  cat = "애니메이션";
+		                  break;
+		               }
+
+					
+					
 				%>
 				<tr class="sub_tab">
 					<td>No.<%=tripInfo.getTripNo()%></td>

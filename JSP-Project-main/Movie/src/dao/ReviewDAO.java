@@ -60,7 +60,7 @@ public class ReviewDAO {
 		PreparedStatement pstmt = null;
 		try {
 			conn = JdbcUtil.getConnection();
-			pstmt = conn.prepareStatement("INSERT INTO reviews VALUES(?, ?, ?, ?, SYSDATE)");
+			pstmt = conn.prepareStatement("INSERT INTO reviews VALUES(?, ?, ?, ?, SYSDATE())");
 			pstmt.setInt(1, maxReviewNum(tripNo)+1);
 			pstmt.setString(2, id);
 			pstmt.setString(3, txt);
@@ -109,13 +109,6 @@ public class ReviewDAO {
 			pstmt.setInt(1, tripNo);
 			pstmt.setInt(2, num);
 			pstmt.executeUpdate();
-			
-			/*
-			 * int pos = pstmt.executeUpdate(); if(pos > 0) { pstmt = conn.
-			 * prepareStatement("UPDATE dayroom SET seatCnt = seatCnt - 1 WHERE schNo = ?");
-			 * pstmt.setInt(1, schNo); 
-			 * pstmt.executeUpdate(); }
-			 */
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {

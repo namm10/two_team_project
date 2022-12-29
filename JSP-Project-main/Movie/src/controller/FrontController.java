@@ -11,9 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class FrontServlet
- */
 @WebServlet(name = "front", urlPatterns = { "*.do" })
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -21,17 +18,11 @@ public class FrontController extends HttpServlet {
 	String charset = null;
 	HashMap<String, Controller> list = null;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public FrontController() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see Servlet#init(ServletConfig)
-	 */
 	public void init(ServletConfig config) throws ServletException {
 		// url과 sub controller 멥핑
 		charset = config.getInitParameter("charset");
@@ -51,9 +42,6 @@ public class FrontController extends HttpServlet {
 		list.put("/deleteReview.do", new DeleteReviewController());
 	}
 
-	/**
-	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding(charset);
 		String url = request.getRequestURI(); //ex) /dev/memberSearch.do

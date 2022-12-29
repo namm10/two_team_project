@@ -30,15 +30,25 @@ ArrayList<TripVO> list = new ArrayList<TripVO>();
             			String cat = "";
             			
             			switch (vo.getCategory()) {
-            				case 1 :
-            					cat = "자연 체험";
-            					break;
-            				case 2 :
-            					cat = "동물 체험";
-            					break;
-            				case 3 :
-            					cat = "공예 체험";
-            					break;       	
+            			
+                         case 1:
+                            cat = "액션";
+                            break;
+                         case 2:
+                            cat = "로맨스";
+                            break;
+                         case 3:
+                            cat = "코미디";
+                            break;
+                         case 4:
+                            cat = "스릴러";
+                            break;
+                         case 5:
+                            cat = "애니메이션";
+                            break;
+                         
+ 
+            				
             			}
             %>
                 <div class="card" onclick="location.href = '/reviewList.do?tripNo=<%=vo.getTripNo()%>';">
