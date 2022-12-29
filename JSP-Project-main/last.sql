@@ -43,7 +43,7 @@ CREATE TABLE t_board (
     imageFileName VARCHAR(100),
     writeDate DATETIME default (current_date) NOT NULL,
     id VARCHAR(10),
-    CONSTRAINT FK_ID FOREIGN KEY(id) REFERENCES t_member(id)
+    CONSTRAINT FK_ID FOREIGN KEY(id) REFERENCES member(id)
 );
 
 CREATE TABLE SCHEDULE( 
@@ -81,8 +81,10 @@ create table reviews(
     id varchar(20),
     content varchar(200),
     tripNo int(8),
-    writedate Date
+    writedate DATETIME default (current_date) NOT NULL
 );
+select * from  reviews where tripNo=10000 order by num desc;
+INSERT INTO reviews VALUES(1, 'test', "dasdasdsa", 10000, sysdate());
 
 INSERT INTO trip VALUES(10000, '딸기 잼 만들기 체험', 01, 120, '1.png', '쉽고 재미있게, 직접 딴 딸기로 맛있는 딸기 잼을 만들어 보세요!');
 INSERT INTO trip VALUES(10001, '귤 청 만들기 체험', 01, 120, '2.png', '새콤하고 맛있는 귤을 직접 따는 체험과 함께 맛있는 청을 만들어 보세요!');
@@ -97,13 +99,7 @@ INSERT INTO trip VALUES(10008, '가죽 지갑 만들기 체험', 03, 150, '9.png
 insert into member values('test','1234','test@test.com','010-1234-1234','2002-05-12');
 insert into member values('hong','1234','test@test.com','010-1234-1234','2002-05-12');
 insert into member values('Lee','1234','test@test.com','010-1234-1234','2002-05-12');
-
-insert into t_member
-values('hong', '1212', '홍길동', 'hong@gmail.com', sysdate());
-insert into t_member
-values('lee', '1212', '이순신', 'lee@gmail.com', sysdate());
-insert into t_member
-values('kim', '1212', '김유신', 'kimg@gmail.com', sysdate());
+insert into member values('kim','1234','test@test.com','010-1234-1234','2002-05-12');
 
 insert into schedule values(1, '딸기',10000,str_to_date('202301051150', '%Y%m%d%H%i%s'),120,1);
 insert into schedule values(2, '딸기',10000,str_to_date('202301051350', '%Y%m%d%H%i%s'),120,1);
@@ -266,50 +262,6 @@ with recursive cte as
 
 
 SELECT * FROM t_member;
-
-DELETE FROM t_board
-WHERE articleNO in (
-WITH RECURSIVE CTE_CONNECT_BY AS (
-SELECT 1 AS LEVEL, S.* FROM t_board S WHERE parentNO=0
-UNION ALL
-SELECT LEVEL + 1 AS LEVEL, S.* FROM CTE_CONNECT_BY R INNER JOIN t_board S ON  r.articleNO=s.parentNO
-)
-SELECT articleNO FROM  CTE_CONNECT_BY
- );
-
-WITH RECURSIVE CTE_CONNECT_BY AS (
-SELECT 1 AS LEVEL, S.* FROM t_board S WHERE parentNO=0
-UNION
-SELECT LEVEL + 1 AS LEVEL, S.* FROM CTE_CONNECT_BY R INNER JOIN t_board S ON  r.articleNO=s.parentNO)
-SELECT LEVEL,articleNO,parentNO,title,content,id,writeDate
-from cte_connect_by
-ORDER BY articleNO DESC;
-
-	with recursive cte as
-	(
-	    select articleNO, parentNO, title, content, imageFileName, writedate, id,
-        cast(id as char(100)) lvl
-	    from t_board
-	    where parentNo=0
-		union all
-		select a.articleNO, a.parentNO, a.title, a.content, a.imageFileName, a.writedate, a.id,
-		concat(b.lvl, ',', a.articleno) lvl
-		from t_board a
-		inner join cte b on a.parentno = b.articleno 
-	)
-		select articleno, parentno, concat(repeat('&nbsp;&nbsp', parentNO), title) as title, parentno, id, writedate
-		from cte
-		order by articleNO desc;
-        
-
-WITH RECURSIVE CTE_CONNECT_BY AS (
-SELECT 1 AS LEVEL, S.* FROM t_board S WHERE articleNO = ?
-UNION ALL
-SELECT LEVEL + 1 AS LEVEL, S.* FROM CTE_CONNECT_BY R INNER JOIN t_board S ON   r.articleNO = s.parentNO
-)
-SELECT articleNO FROM  CTE_CONNECT_BY 
-;
-
 SELECT
     *
 FROM member;

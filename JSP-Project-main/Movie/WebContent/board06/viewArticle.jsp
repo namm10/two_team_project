@@ -15,7 +15,12 @@
      #tr_btn_modify{
        display:none;
      }
-   
+
+	.tab2{
+		margin-left:300px;
+		margin-top:50px;
+	}
+
    </style>
    <script  src="http://code.jquery.com/jquery-latest.min.js"></script> 
    <script type="text/javascript" >
@@ -79,7 +84,7 @@
 </head>
 <body>
   <form name="frmArticle" method="post"  action="${contextPath}"  enctype="multipart/form-data">
-  <table  border=0  align="center">
+  <table class="tab2" border=0  align="center">
   <tr>
    <td width=150 align="center" bgcolor=#FF9933>
       글번호
@@ -94,7 +99,7 @@
       작성자 아이디
    </td>
    <td >
-    <input type=text value="${user.getId()}" name="writer"  disabled />
+    <input type=text value="${article.id}" name="writer"  disabled />
    </td>
   </tr>
   <tr>

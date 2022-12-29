@@ -69,3 +69,7 @@ footer {
 	margin-top: 40px;
 	padding: 40px;
 }
+
+table{
+		border-collapse: collapse;
+	}

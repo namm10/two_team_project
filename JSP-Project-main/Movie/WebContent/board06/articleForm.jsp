@@ -28,12 +28,20 @@
   }
 
 </script>
+<style>
+	table{
+		border-collapse: collapse;
+	}
+	.tab1{
+		margin-left:300px;
+	}
+</style>
  <title>새글 쓰기 창</title>
 </head>
 <body>
 <h1 style="text-align:center">새글 쓰기</h1>
   <form name="articleForm" method="post"   action="${contextPath}/board/addArticle.do"   enctype="multipart/form-data">
-    <table border="0" align="center">
+    <table border="0" align="center" class="tab1">
      <tr>
 	   <td align="right">글제목: </td>
 	   <td colspan="2"><input type="text" size="67"  maxlength="500" name="title" /></td>

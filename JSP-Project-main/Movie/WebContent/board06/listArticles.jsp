@@ -3,10 +3,24 @@
     isELIgnored="false" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="../header.jsp" %>
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 <%
   request.setCharacterEncoding("UTF-8");
 %>  
+<style>
+	table{
+		border-collapse: collapse;
+	}
+	.tb_box{
+		margin-left:150px;
+		margin-top:30px;
+		
+	}
+	.cls2{
+		height: 500px
+	}
+</style>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,8 +32,8 @@
   <title>글목록창</title>
 </head>
 <body>
-<table align="center" border="1"  width="80%"  >
-  <tr height="10" align="center"  bgcolor="lightblue">
+<table class="tb_box" align="center" border="1"  width="1000px"  >
+  <tr  height="10" align="center"  bgcolor="lightblue">
      <td >글번호</td>
      <td >작성자</td>              
      <td >제목</td>
@@ -61,6 +75,8 @@
      </c:when>
     </c:choose>
 </table>
-<a  class="cls1"  href="${contextPath}/board/articleForm.do"><p class="cls2">글쓰기</p></a>
+<a  class="cls1 dls2" href="${contextPath}/board/articleForm.do"><p class="cls2">글쓰기</p></a>
 </body>
 </html>
+
+<%@ include file="../footer.jsp" %>

@@ -36,7 +36,7 @@ public class BoardDAO {
 					+ "SELECT LEVEL + 1 AS LEVEL, S.* FROM CTE_CONNECT_BY R INNER JOIN t_board S ON  r.articleNO=s.parentNO)\r\n"
 					+ "SELECT LEVEL,articleNO,parentNO,title,content,id,writeDate\r\n"
 					+ "from cte_connect_by\r\n"
-					+ "ORDER BY articleNO DESC";
+					+ "ORDER BY articleNO DESC;";
 			pstmt = conn.prepareStatement(query);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {

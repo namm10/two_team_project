@@ -68,26 +68,18 @@ TripVO tripInfo = new TripVO();
 					img = tripInfo.getImg();
 					
 					switch (tripInfo.getCategory()) {
-					
-		               case 1:
-		                  cat = "액션";
-		                  break;
-		               case 2:
-		                  cat = "로맨스";
-		                  break;
-		               case 3:
-		                  cat = "코미디";
-		                  break;
-		               case 4:
-		                  cat = "스릴러";
-		                  break;
-		               case 5:
-		                  cat = "애니메이션";
-		                  break;
-		               }
-
+					case 1:
+						cat = "자연 체험";
+						break;
+					case 2:
+						cat = "동물 체험";
+						break;
+					case 3:
+						cat = "공예 체험";
+						break;
 					
 					
+					}
 				%>
 				<tr class="sub_tab">
 					<td>No.<%=tripInfo.getTripNo()%></td>
@@ -138,7 +130,7 @@ TripVO tripInfo = new TripVO();
  									<span style="color:#aaa;" id="counting">0</span>/50자
  								</div>
 								<div style="float:right; display:inline-block; hegiht:50px">
-									<button  type="submit" class="" id="registerBtn" >등록</button>
+									<button  type="submit" class="" id="registerBtn">등록</button>
 								</div>
 							</div>
 							<br>
